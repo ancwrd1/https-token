@@ -1,0 +1,15 @@
+[package]
+name = "https-token"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+rustls-cng = { git = "https://github.com/rustls/rustls-cng", branch = "feature/pin-0.23" }
+hyper-rustls = "0.27"
+hyper-util = "0.1"
+http-body-util = "0.1"
+http = "1"
+hyper = "1"
+rustls = "0.23"
+tokio = { version = "1",  features = ["full"] }
+anyhow = "1"
