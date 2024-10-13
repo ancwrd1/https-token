@@ -750,12 +750,13 @@ dependencies = [
 
 [[package]]
 name = "rustls-cng"
-version = "0.5.0"
-source = "git+https://github.com/rustls/rustls-cng?branch=feature/pin-0.23#07ed7fb6e78d6923fc7fa7873fdc81376e2a00e1"
+version = "0.5.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "70f1ff9ad152a0a9bc9c81f2b0b4b0b6399df856788b31fb9d1b5c1e8620c749"
 dependencies = [
  "rustls",
  "sha2",
- "windows-sys 0.52.0",
+ "windows-sys 0.59.0",
 ]
 
 [[package]]
