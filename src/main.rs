@@ -28,7 +28,7 @@ fn error(err: String) -> io::Error {
 
 #[tokio::main]
 async fn run_client() -> anyhow::Result<()> {
-    let url = match env::args().nth(1) {
+    let url = match env::args().nth(2) {
         Some(ref url) => Uri::from_str(url).map_err(|e| error(format!("{}", e)))?,
         None => {
             println!("Usage: client <url> <subject> <pin>");
@@ -36,7 +36,7 @@ async fn run_client() -> anyhow::Result<()> {
         }
     };
 
-    let subject = match env::args().nth(2) {
+    let subject = match env::args().nth(3) {
         Some(subj) => subj,
         None => {
             println!("Usage: client <url> <subject> <pin>");
@@ -44,8 +44,8 @@ async fn run_client() -> anyhow::Result<()> {
         }
     };
 
-    let pin = match env::args().nth(3) {
-        Some(subj) => subj,
+    let pin = match env::args().nth(4) {
+        Some(pin) => pin,
         None => {
             println!("Usage: client <url> <subject> <pin>");
             return Ok(());
@@ -104,6 +104,7 @@ fn get_chain(
     name: &str,
 ) -> anyhow::Result<(Vec<CertificateDer<'static>>, Arc<CngSigningKey>)> {
     let contexts = store.find_by_subject_str(name)?;
+    println!("{:?}", name);
     let context = contexts
         .first()
         .ok_or_else(|| anyhow::Error::msg("No client cert"))?;
